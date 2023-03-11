@@ -1,0 +1,11 @@
+.profile {
+    /* outline: 1px yellow dashed; */
+    margin: 0 auto;
+    padding: 36px 0 48px 0;
+    max-width: 880px;
+    min-height: 120px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

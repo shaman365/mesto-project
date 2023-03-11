@@ -1,19 +1,103 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <title>Место</title>
-  </head>
 
-  <body class="page">
-    <header class="header"></header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./pages/index.css" />
+  <title>Mesto</title>
+</head>
 
-    <main>
-      <section class=""></section>
-    </main>
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
+    <hr class="header__line">
+  </header>
+  <main>
+    <section class="profile">
+      <div class="profile__container">
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="Фотография профиля">
+        <div class="profile__info-container">
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button"></button>
+          </div>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button" type="button"></button>
+    </section>
 
-    <footer class="footer"></footer>
-  </body>
+    <section class="element-grid">
+      <ul class="element-grid__list">
+        <li>
+          <img class="element-grid__image" src="./images/element-photo-1.jpg"
+            alt="Фотография крепости в городе Карачаевск">
+          <div class="element-grid__caption-container">
+            <h2 class="element-grid__caption">Карачаевск</h2>
+            <button class="element-grid__like-button" type="button"></button>
+          </div>
+        </li>
+
+        <li class="element-grid__item">
+          <img class="element-grid__image" src="./images/element-photo-3.jpg" alt="Фотография горы Эльбрус">
+          <div class="element-grid__caption-container">
+            <h2 class="element-grid__caption">Гора Эльбрус</h2>
+            <button class="element-grid__like-button" type="button"></button>
+          </div>
+        </li>
+
+        <li class="element-grid__item">
+          <img class="element-grid__image" src="./images/element-photo-5.jpg" alt="Фотография горы в Домбае">
+          <div class="element-grid__caption-container">
+            <h2 class="element-grid__caption">Домбай</h2>
+            <button class="element-grid__like-button" type="button"></button>
+          </div>
+        </li>
+
+        <li class="element-grid__item">
+          <img class="element-grid__image" src="./images/element-photo-3.jpg" alt="Фотография горы Эльбрус">
+          <div class="element-grid__caption-container">
+            <h2 class="element-grid__caption">Гора Эльбрус</h2>
+            <button class="element-grid__like-button" type="button"></button>
+          </div>
+        </li>
+
+        <li class="element-grid__item">
+          <img class="element-grid__image" src="./images/element-photo-5.jpg" alt="Фотография горы в Домбае">
+          <div class="element-grid__caption-container">
+            <h2 class="element-grid__caption">Домбай</h2>
+            <button class="element-grid__like-button" type="button"></button>
+          </div>
+        </li>
+
+        <li class="element-grid__item">
+          <img class="element-grid__image" src="./images/element-photo-1.jpg"
+            alt="Фотография крепости в республике Карачаево-Черкессия">
+          <div class="element-grid__caption-container">
+            <h2 class="element-grid__caption">Карачаево-Черкессия</h2>
+            <button class="element-grid__like-button" type="button"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy;&nbsp; 2023 Mesto Russia</p>
+  </footer>
+
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close-button"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form class="popup__form">
+        <input class="popup__input" type="text" placeholder="Имя" value="Жак-Ив Кусто" name="name">
+        <input class="popup__input" type="text" placeholder="О себе" value="Исследователь океана" name="about">
+        <button class="popup__save-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+</body>
+
 </html>
