@@ -7,3 +7,14 @@
     line-height: 48px;
     color: #fff;
 }
+
+@media screen and (max-width: 670px) {
+    .profile__name {
+        font-size: 27px;
+        font-weight: 500;
+        line-height: 33px;
+
+        padding-left: 24px;
+        padding-top: 24px;
+    }
+}

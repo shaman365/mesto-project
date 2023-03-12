@@ -3,3 +3,10 @@
     margin: 0 auto;
     max-width: 880px;
 }
+
+@media screen and (max-width: 320px) {
+    .element-grid {
+        max-width: 320px;
+        padding: 0 16px 0 20px;
+    }
+}

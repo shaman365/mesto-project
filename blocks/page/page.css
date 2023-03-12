@@ -5,6 +5,13 @@
   font-family: 'Inter', Arial, sans-serif;
 }
 
+
+@media screen and (max-width: 320px) {
+  .page {
+    padding-top: 28px;
+  }
+}
+
 /* section {
   border: solid white 1px;
 }
