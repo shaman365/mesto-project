@@ -1,15 +1,15 @@
 .header__logo {
-    width: 142px;
-    height: 33px;
-    transform: translate(0px, -8px);
+  width: 142px;
+  height: 33px;
+  transform: translate(0px, -8px);
 }
 
-@media screen and (max-width: 320px) {
-    .header__logo {
-        max-width: 320px;
-        width: 104px;
-        height: 24px;
-        padding-left: 28px;
-        transform: translate(0px, 1px);
-    }
+@media screen and (max-width: 1279px) {
+  .header__logo {
+    max-width: 320px;
+    width: 104px;
+    height: 24px;
+    padding-left: 28px;
+    transform: translate(0px, 1px);
+  }
 }

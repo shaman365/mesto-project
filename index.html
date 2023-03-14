@@ -11,7 +11,6 @@
 <body class="page">
   <header class="header">
     <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
-    <hr class="header__line">
   </header>
   <main>
     <section class="profile">
@@ -37,7 +36,7 @@
             <h2 class="element-grid__caption">Карачаевск</h2>
             <button class="element-grid__like-button" type="button"></button>
           </div>
-        </li>        
+        </li>
 
         <li>
           <img class="element-grid__image" src="./images/element-photo-3.jpg" alt="Фотография горы Эльбрус">
@@ -89,15 +88,15 @@
 
   <div class="popup">
     <div class="popup__container">
-      <form>
+      <form id="form_profile" method="post" name="form_profile">
         <h3 class="popup__title">Редактировать профиль</h3>
         <fieldset class="popup__fieldset">
-          <input class="popup__input" type="text" placeholder="Имя" value="Жак-Ив Кусто" name="name">
-          <input class="popup__input" type="text" placeholder="О себе" value="Исследователь океана" name="about">
-          <button class="popup__save-button" type="button">Сохранить</button>
+          <input id="field_name" class="popup__input" type="text" placeholder="Имя" name="name">
+          <input id="field_about" class="popup__input" type="text" placeholder="О себе" name="about">
         </fieldset>
-        <button class="popup__close-button" type="button"></button>
+        <button class="popup__close-button" type="reset"></button>
       </form>
+      <button class="popup__save-button" type="submit">Сохранить</button>
     </div>
   </div>
 </body>

@@ -1,12 +1,18 @@
 .element-grid {
-    /* outline: 1px yellow dashed; */
-    margin: 0 auto;
-    max-width: 880px;
+  /* outline: 1px yellow dashed; */
+  margin: 0 auto;
+  max-width: 880px;
+}
+
+@media screen and (max-width: 1279px) {
+  .element-grid {
+    padding: 0 20px 0 20px;
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .element-grid {
-        max-width: 320px;
-        padding: 0 16px 0 20px;
-    }
+  .element-grid {
+    max-width: 320px;
+    padding: 0 16px 0 20px;
+  }
 }
