@@ -19,12 +19,12 @@
         <div class="profile__info-container">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
           </div>
           <p class="profile__description">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__add-button" type="button"></button>
+      <button class="profile__add-button" type="button" aria-label="Добавить профиль"></button>
     </section>
 
     <section class="element-grid">
@@ -34,7 +34,7 @@
             alt="Фотография крепости в городе Карачаевск">
           <div class="element-grid__caption-container">
             <h2 class="element-grid__caption">Карачаевск</h2>
-            <button class="element-grid__like-button" type="button"></button>
+            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
           </div>
         </li>
 
@@ -42,7 +42,7 @@
           <img class="element-grid__image" src="./images/element-photo-3.jpg" alt="Фотография горы Эльбрус">
           <div class="element-grid__caption-container">
             <h2 class="element-grid__caption">Гора Эльбрус</h2>
-            <button class="element-grid__like-button" type="button"></button>
+            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
           </div>
         </li>
 
@@ -50,7 +50,7 @@
           <img class="element-grid__image" src="./images/element-photo-5.jpg" alt="Фотография горы в Домбае">
           <div class="element-grid__caption-container">
             <h2 class="element-grid__caption">Домбай</h2>
-            <button class="element-grid__like-button" type="button"></button>
+            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
           </div>
         </li>
 
@@ -58,7 +58,7 @@
           <img class="element-grid__image" src="./images/element-photo-3.jpg" alt="Фотография горы Эльбрус">
           <div class="element-grid__caption-container">
             <h2 class="element-grid__caption">Гора Эльбрус</h2>
-            <button class="element-grid__like-button" type="button"></button>
+            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
           </div>
         </li>
 
@@ -66,7 +66,7 @@
           <img class="element-grid__image" src="./images/element-photo-5.jpg" alt="Фотография горы в Домбае">
           <div class="element-grid__caption-container">
             <h2 class="element-grid__caption">Домбай</h2>
-            <button class="element-grid__like-button" type="button"></button>
+            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
           </div>
         </li>
 
@@ -75,7 +75,7 @@
             alt="Фотография крепости в республике Карачаево-Черкессия">
           <div class="element-grid__caption-container">
             <h2 class="element-grid__caption">Карачаево-Черкессия</h2>
-            <button class="element-grid__like-button" type="button"></button>
+            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
           </div>
         </li>
       </ul>
@@ -88,15 +88,15 @@
 
   <div class="popup">
     <div class="popup__container">
-      <form id="form_profile" method="post" name="form_profile">
+      <form id="form_profile" method="post" name="form_profile" action="#">
         <h3 class="popup__title">Редактировать профиль</h3>
         <fieldset class="popup__fieldset">
-          <input id="field_name" class="popup__input" type="text" placeholder="Имя" name="name">
-          <input id="field_about" class="popup__input" type="text" placeholder="О себе" name="about">
+          <input id="form_profile__field_name" class="popup__input" type="text" placeholder="Имя" name="name">
+          <input id="form_profile__field_about" class="popup__input" type="text" placeholder="О себе" name="about">
         </fieldset>
-        <button class="popup__close-button" type="reset"></button>
+        <button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
       </form>
-      <button class="popup__save-button" type="submit">Сохранить</button>
+      <button class="popup__close-button" aria-label="Закрыть"></button>
     </div>
   </div>
 </body>
