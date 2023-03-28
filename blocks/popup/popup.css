@@ -8,8 +8,8 @@
   overflow: auto;
   width: 100%;
   height: 100%;
-  background: rgb(0, 0, 0 , .5);
-  display: none;
+  background: rgb(0, 0, 0, .5);
+  visibility: hidden;
   opacity: 0;
-  transition: all .4s ease;
+  transition: visibility 0s, opacity .3s ease;
 }
