@@ -22,6 +22,8 @@
 @import url(../blocks/element-grid/__list/element-grid__list.css);
 @import url(../blocks/element-grid/element-grid.css);
 @import url(../blocks/element-grid/__like-button/_liked/element-grid__like-button_liked.css);
+@import url(../blocks/element-grid/__delete-button/element-grid__delete-button.css);
+@import url(../blocks/element-grid/__element/element-grid__element.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

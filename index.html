@@ -24,7 +24,7 @@
           <p class="profile__description">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__add-button" type="button" aria-label="Добавить профиль"></button>
+      <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
     </section>
 
     <section class="element-grid">
@@ -86,9 +86,9 @@
     <p class="footer__copyright">&copy; 2023 Диваев Сергей</p>
   </footer>
 
-  <div class="popup">
+  <div id="popup-profile" class="popup">
     <div class="popup__container">
-      <form id="form_profile" method="post" name="form_profile" action="#">
+      <form id="form-profile" method="post" name="form_profile" action="#">
         <h3 class="popup__title">Редактировать профиль</h3>
         <fieldset class="popup__fieldset">
           <input id="form_profile__field_name" class="popup__input" type="text" placeholder="Имя" name="name">
@@ -97,16 +97,33 @@
         </fieldset>
         <button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
       </form>
-      <button class="popup__close-button" aria-label="Закрыть"></button>
+      <button id="form_profile__close-button" class="popup__close-button" aria-label="Закрыть"></button>
     </div>
   </div>
+
+  <div id="popup-place" class="popup">
+    <div class="popup__container">
+      <form id="form-place" method="post" name="form_profile" action="#">
+        <h3 class="popup__title">Новое место</h3>
+        <fieldset class="popup__fieldset">
+          <input id="form_place__field_name" class="popup__input" type="text" placeholder="Название" name="name">
+          <input id="form_place__field_link" class="popup__input" type="text" placeholder="Ссылка на картинку"
+            name="place">
+        </fieldset>
+        <button id="form_profile__save-button" class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
+      </form>
+      <button id="form_place__close-button" class="popup__close-button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
   <template id="card">
-    <li id = "cardElement">
-      <img class="element-grid__image" src="" alt="">
+    <li class="element-grid__element">
+      <img class="element-grid__image">
       <div class="element-grid__caption-container">
         <h2 class="element-grid__caption"></h2>
         <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
       </div>
+      <button class="element-grid__delete-button">
     </li>
   </template>
 </body>

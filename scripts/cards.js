@@ -29,22 +29,26 @@ const initialCards = [
 function initializeCards() {
 
   const templateCard = document.querySelector('#card').content;
-  let cardList = [];
 
   for (let i = 0; i < initialCards.length; i++) {
 
-    const card = templateCard.querySelector('#cardElement').cloneNode(true);
+    const card = templateCard.querySelector('.element-grid__element').cloneNode(true);
 
     let cardImg = card.querySelector('.element-grid__image');
     let cardCaption = card.querySelector('.element-grid__caption')
     let likeButton = card.querySelector('.element-grid__like-button');
+    let deleteButton = card.querySelector('.element-grid__delete-button');
     let cardContainer = document.querySelector('.element-grid__list');
-
-    console.log('likeButton: ', likeButton);
 
     likeButton.addEventListener('click', (evt) => {
       console.log('evt: ', evt)
       evt.target.classList.toggle('element-grid__like-button_liked');
+    });
+
+    deleteButton.addEventListener('click', (evt) => {
+      console.log('deleteButton evt: ', evt);
+      console.log('deleteButton evt: ', evt.target);
+      evt.target.closest('.element-grid__element').remove();
     });
 
     cardImg.setAttribute('src', initialCards[i].link);
