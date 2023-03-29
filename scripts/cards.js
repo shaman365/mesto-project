@@ -24,3 +24,27 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+function initializeCards() {
+
+  const templateCard = document.querySelector('#card').content;
+  let cardList = [];
+
+  for (let i = 0; i < initialCards.length; i++) {
+
+    const card = templateCard.querySelector('#cardElement').cloneNode(true);
+
+    let cardImg = card.querySelector('.element-grid__image');
+    let cardCaption = card.querySelector('.element-grid__caption')
+    let cardContainer = document.querySelector('.element-grid__list');
+
+    cardImg.setAttribute('src', initialCards[i].link);
+    cardImg.setAttribute('alt', initialCards[i].name);
+    cardCaption.textContent = initialCards[i].name;
+    cardContainer.prepend(card);
+  }
+}
+
+initializeCards();
+
+
