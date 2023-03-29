@@ -25,6 +25,7 @@ const initialCards = [
   }
 ];
 
+
 function initializeCards() {
 
   const templateCard = document.querySelector('#card').content;
@@ -36,7 +37,15 @@ function initializeCards() {
 
     let cardImg = card.querySelector('.element-grid__image');
     let cardCaption = card.querySelector('.element-grid__caption')
+    let likeButton = card.querySelector('.element-grid__like-button');
     let cardContainer = document.querySelector('.element-grid__list');
+
+    console.log('likeButton: ', likeButton);
+
+    likeButton.addEventListener('click', (evt) => {
+      console.log('evt: ', evt)
+      evt.target.classList.toggle('element-grid__like-button_liked');
+    });
 
     cardImg.setAttribute('src', initialCards[i].link);
     cardImg.setAttribute('alt', initialCards[i].name);
@@ -46,5 +55,3 @@ function initializeCards() {
 }
 
 initializeCards();
-
-
