@@ -30,8 +30,7 @@ function initializeCards() {
 
   const templateCard = document.querySelector('#card').content;
 
-  for (let i = 0; i < initialCards.length; i++) {
-
+  initialCards.forEach(element => {
     const card = templateCard.querySelector('.element-grid__element').cloneNode(true);
 
     let cardImg = card.querySelector('.element-grid__image');
@@ -51,11 +50,11 @@ function initializeCards() {
       evt.target.closest('.element-grid__element').remove();
     });
 
-    cardImg.setAttribute('src', initialCards[i].link);
-    cardImg.setAttribute('alt', initialCards[i].name);
-    cardCaption.textContent = initialCards[i].name;
+    cardImg.setAttribute('src', element.link);
+    cardImg.setAttribute('alt', element.name);
+    cardCaption.textContent = element.name;
     cardContainer.prepend(card);
-  }
+  });
 }
 
 initializeCards();
