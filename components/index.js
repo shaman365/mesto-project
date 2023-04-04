@@ -37,8 +37,8 @@ const closePlaceButton = document.querySelector('.popup__place-close-button');
 const closePictureButton = document.querySelector('.popup__picture-close-button');
 
 //формы
-const profileForm = document.querySelector('.form__type_profile');
-const placeForm = document.querySelector('.form__type_place');
+const profileForm = document.querySelector('.form_profile');
+const placeForm = document.querySelector('.form_place');
 
 // поля формы профиль
 const inputProfileName = document.querySelector('.popup__input_name');
@@ -56,28 +56,28 @@ const profileDescription = document.querySelector('.profile__description');
 openProfileButton.addEventListener('click', () => {
   inputProfileName.value = profileName.textContent;
   inputProfileDescription.value = profileDescription.textContent;
-  openPopup(document.querySelector('.popup__type_profile'));
+  openPopup(document.querySelector('.popup_profile'));
 });
 
 closeProfileButton.addEventListener('click', () => {
   inputProfileName.value = '';
   inputProfileDescription.value = '';
-  closePopup(document.querySelector('.popup__type_profile'));
+  closePopup(document.querySelector('.popup_profile'));
 });
 
 closePlaceButton.addEventListener('click', () => {
-  closePopup(document.querySelector('.popup__type_place'));
+  closePopup(document.querySelector('.popup_place'));
 });
 
 closePictureButton.addEventListener('click', () => {
-  closePopup(document.querySelector('.popup__type_picture'));
+  closePopup(document.querySelector('.popup_picture'));
 });
 
 addPlaceButton.addEventListener('click', () => {
   inputPlaceName.value = '';
   inputPlaceLink.value = '';
 
-  openPopup(document.querySelector('.popup__type_place'));
+  openPopup(document.querySelector('.popup_place'));
 });
 
 
@@ -108,7 +108,7 @@ function initializeCards(cardList) {
     const likeButton = card.querySelector('.element-grid__like-button');
     const deleteButton = card.querySelector('.element-grid__delete-button');
 
-    // поля popup__type_picture
+    // поля popup_picture
     const pictureImage = document.querySelector('.popup__picture-img');
     const pictureCaption = document.querySelector('.popup__picture-caption');
 
@@ -128,7 +128,7 @@ function initializeCards(cardList) {
         pictureCaption.textContent = evt.target.nextElementSibling.querySelector('.element-grid__caption').textContent;
       }
 
-      openPopup(document.querySelector('.popup__type_picture'));
+      openPopup(document.querySelector('.popup_picture'));
     });
 
     cardImg.setAttribute('src', element.link);
@@ -152,7 +152,7 @@ function formProfileSubmitHandler(evt) {
   profileName.textContent = inputProfileName.value;
   profileDescription.textContent = inputProfileDescription.value;
 
-  closePopup(document.querySelector('.popup__type_profile'));
+  closePopup(document.querySelector('.popup_profile'));
 }
 
 function formPlaceSubmitHandler(evt) {
@@ -164,5 +164,5 @@ function formPlaceSubmitHandler(evt) {
   initialCards.unshift(card);
 
   initializeCards(initialCards);
-  closePopup(document.querySelector('.popup__type_place'));
+  closePopup(document.querySelector('.popup_place'));
 }
