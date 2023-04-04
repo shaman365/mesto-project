@@ -29,55 +29,6 @@
 
     <section class="element-grid">
       <ul class="element-grid__list">
-        <!-- <li>
-          <img class="element-grid__image" src="./images/element-photo-1.jpg"
-            alt="Фотография крепости в городе Карачаевск">
-          <div class="element-grid__caption-container">
-            <h2 class="element-grid__caption">Карачаевск</h2>
-            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li>
-
-        <li>
-          <img class="element-grid__image" src="./images/element-photo-3.jpg" alt="Фотография горы Эльбрус">
-          <div class="element-grid__caption-container">
-            <h2 class="element-grid__caption">Гора Эльбрус</h2>
-            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li>
-
-        <li>
-          <img class="element-grid__image" src="./images/element-photo-5.jpg" alt="Фотография горы в Домбае">
-          <div class="element-grid__caption-container">
-            <h2 class="element-grid__caption">Домбай</h2>
-            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li>
-
-        <li>
-          <img class="element-grid__image" src="./images/element-photo-3.jpg" alt="Фотография горы Эльбрус">
-          <div class="element-grid__caption-container">
-            <h2 class="element-grid__caption">Гора Эльбрус</h2>
-            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li>
-
-        <li>
-          <img class="element-grid__image" src="./images/element-photo-5.jpg" alt="Фотография горы в Домбае">
-          <div class="element-grid__caption-container">
-            <h2 class="element-grid__caption">Домбай</h2>
-            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li>
-
-        <li>
-          <img class="element-grid__image" src="./images/element-photo-1.jpg"
-            alt="Фотография крепости в республике Карачаево-Черкессия">
-          <div class="element-grid__caption-container">
-            <h2 class="element-grid__caption">Карачаево-Черкессия</h2>
-            <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
-          </div>
-        </li> -->
       </ul>
     </section>
   </main>
@@ -86,48 +37,55 @@
     <p class="footer__copyright">&copy; 2023 Диваев Сергей</p>
   </footer>
 
-  <div id="popup-profile" class="popup">
+  <div class="popup popup__type_profile">
     <div class="popup__container">
-      <form id="form-profile" method="post" name="form_profile" action="#">
+      <form class="form__type_profile" method="post" name="form_profile" action="#">
         <h3 class="popup__title">Редактировать профиль</h3>
         <fieldset class="popup__fieldset">
-          <input id="form_profile__field_name" class="popup__input" type="text" placeholder="Имя" name="name">
-          <input id="form_profile__field_description" class="popup__input" type="text" placeholder="О себе"
+          <input class="popup__input popup__input_name" type="text" placeholder="Имя" name="name">
+          <input class="popup__input popup__input_description" type="text" placeholder="О себе"
             name="description">
         </fieldset>
         <button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
       </form>
-      <button id="form_profile__close-button" class="popup__close-button" aria-label="Закрыть"></button>
+      <button class="popup__close-button popup__profile-close-button" aria-label="Закрыть"></button>
     </div>
   </div>
 
-  <div id="popup-place" class="popup">
+  <div class="popup popup__type_place">
     <div class="popup__container">
-      <form id="form-place" method="post" name="form_profile" action="#">
+      <form class="form__type_place" method="post" name="form_profile" action="#">
         <h3 class="popup__title">Новое место</h3>
         <fieldset class="popup__fieldset">
-          <input id="form_place__field_name" class="popup__input" type="text" placeholder="Название" name="name">
-          <input id="form_place__field_link" class="popup__input" type="text" placeholder="Ссылка на картинку"
+          <input class="popup__input popup__input_place" type="text" placeholder="Название" name="name">
+          <input class="popup__input popup__input_link" type="text" placeholder="Ссылка на картинку"
             name="place">
         </fieldset>
-        <button id="form_profile__save-button" class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
+        <button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
       </form>
-      <button id="form_place__close-button" class="popup__close-button" aria-label="Закрыть"></button>
+      <button class="popup__close-button popup__place-close-button" aria-label="Закрыть"></button>
     </div>
   </div>
 
-  <template id="card">
+  <div class="popup popup__type_picture">
+    <div class="popup__picture-container">
+      <img class="popup__picture-img" src="initial" alt="initial">
+      <p class="popup__picture-caption"></p>
+      <button class="popup__picture-close-button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <template class="card">
     <li class="element-grid__element">
-      <img class="element-grid__image">
+      <img class="element-grid__image" src="initial" alt="initial">
       <div class="element-grid__caption-container">
         <h2 class="element-grid__caption"></h2>
         <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
       </div>
-      <button class="element-grid__delete-button">
+      <button class="element-grid__delete-button"></button>
     </li>
   </template>
-</body>
-<script src="./scripts/popup.js"></script>
-<script src="./scripts/cards.js"></script>
 
+</body>
+<script src="./components/index.js"></script>
 </html>
