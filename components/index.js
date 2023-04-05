@@ -32,8 +32,8 @@ window.addEventListener('load', () => {
   initializeCards(initialCards);
 });
 
-formProfile.addEventListener('submit', formProfileSubmitHandler);
-formPlace.addEventListener('submit', formPlaceSubmitHandler);
+formProfile.addEventListener('submit', submitFormProfileHandler);
+formPlace.addEventListener('submit', submitFormPlaceHandler);
 
 // функции
 function initializeCards(cardList) {
@@ -50,7 +50,7 @@ function closePopup(popup) {
   popup ? popup.classList.remove('popup_opened') : console.error('closePopup. param "popup" is null');
 }
 
-function formProfileSubmitHandler(evt) {
+function submitFormProfileHandler(evt) {
   evt.preventDefault();
 
   profileName.textContent = inputProfileName.value;
@@ -59,7 +59,7 @@ function formProfileSubmitHandler(evt) {
   closePopup(popupProfile);
 }
 
-function formPlaceSubmitHandler(evt) {
+function submitFormPlaceHandler(evt) {
   evt.preventDefault();
 
   const card = {};
