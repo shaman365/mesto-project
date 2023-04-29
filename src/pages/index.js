@@ -1,4 +1,4 @@
-//console.log('index.js is live');
+import './index.css';
 
 const initialCards = [
   {

@@ -2,12 +2,10 @@ const path = require('path'); // подключаем path к конфигу в�
 const HtmlWebpackPlugin = require('html-webpack-plugin'); // подключите плагин
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // подключили плагин
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // подключите к проекту mini-css-extract-plugin
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
 
 module.exports = {
-  // указали первое место, куда заглянет webpack, — файл index.js в папке src
-  entry: { main: './src/index.js' },
+  // указали первое место, куда заглянет webpack, — файл index.js в папке src/pages
+  entry: { main: './src/pages/index.js' },
 
   // указали в какой файл будет собираться весь js и дали ему имя
   output: {
@@ -36,7 +34,7 @@ module.exports = {
         // при обработке этих файлов нужно использовать babel-loader
         use: 'babel-loader',
         // исключает папку node_modules, файлы в ней обрабатывать не нужно
-        exclude: /node_modules/
+        exclude: '/node_modules/'
       },
       {
         // регулярное выражение, которое ищет все файлы с такими расширениями
@@ -50,21 +48,13 @@ module.exports = {
         // MiniCssExtractPlugin.loader и css-loader
         use: [MiniCssExtractPlugin.loader, {
           loader: 'css-loader',
-          //Эта опция описана в документации сss-loader.
-          //Значение 1 говорит о том, что некоторые трансформации PostCSS нужно применить до css-loader.
-          options: { importLoaders: 1 }
-        }]
-      },
-      {
-        // применять это правило только к CSS-файлам
-        test: /\.css$/,
-        // при обработке этих файлов нужно использовать
-        // MiniCssExtractPlugin.loader и css-loader
-        use: [MiniCssExtractPlugin.loader, {
-          loader: 'css-loader',
+          options: {
+            importLoaders: 1
+          }
         },
           // Добавьте postcss-loader
-          'postcss-loader']
+          'postcss-loader'
+        ]
       },
 
     ]
