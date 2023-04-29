@@ -1,155 +1,91 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mesto</title>
-  </head>
 
-  <body class="page">
-    <header class="header">
-      <img
-        class="header__logo"
-        src="<%=require('./images/logo.svg')%>"
-        alt="Логотип"
-      />
-    </header>
-    <main>
-      <section class="profile">
-        <div class="profile__container">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Фотография профиля"
-          />
-          <div class="profile__info-container">
-            <div class="profile__info">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button
-                class="profile__edit-button"
-                type="button"
-                aria-label="Редактировать профиль"
-              ></button>
-            </div>
-            <p class="profile__description">Исследователь океана</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./pages/index.css" />
+  <title>Mesto</title>
+</head>
+
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="Логотип Mesto Russia">
+  </header>
+  <main>
+    <section class="profile">
+      <div class="profile__container">
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="Фотография профиля">
+        <div class="profile__info-container">
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
           </div>
+          <p class="profile__description">Исследователь океана</p>
         </div>
-        <button
-          class="profile__add-button"
-          type="button"
-          aria-label="Добавить место"
-        ></button>
-      </section>
-
-      <section class="element-grid">
-        <ul class="element-grid__list"></ul>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p class="footer__copyright">&copy; 2023 Диваев Сергей</p>
-    </footer>
-
-    <div class="popup popup__type_profile">
-      <div class="popup__container">
-        <form
-          class="form__type_profile"
-          method="post"
-          name="form_profile"
-          action="#"
-        >
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <fieldset class="popup__fieldset">
-            <input
-              class="popup__input popup__input_name"
-              type="text"
-              placeholder="Имя"
-              name="name"
-            />
-            <input
-              class="popup__input popup__input_description"
-              type="text"
-              placeholder="О себе"
-              name="description"
-            />
-          </fieldset>
-          <button
-            class="popup__save-button"
-            type="submit"
-            aria-label="Сохранить"
-          >
-            Сохранить
-          </button>
-        </form>
-        <button
-          class="popup__close-button popup__profile-close-button"
-          aria-label="Закрыть"
-        ></button>
       </div>
-    </div>
+      <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
+    </section>
 
-    <div class="popup popup__type_place">
-      <div class="popup__container">
-        <form
-          class="form__type_place"
-          method="post"
-          name="form_profile"
-          action="#"
-        >
-          <h3 class="popup__title">Новое место</h3>
-          <fieldset class="popup__fieldset">
-            <input
-              class="popup__input popup__input_place"
-              type="text"
-              placeholder="Название"
-              name="name"
-            />
-            <input
-              class="popup__input popup__input_link"
-              type="text"
-              placeholder="Ссылка на картинку"
-              name="place"
-            />
-          </fieldset>
-          <button
-            class="popup__save-button"
-            type="submit"
-            aria-label="Сохранить"
-          >
-            Сохранить
-          </button>
-        </form>
-        <button
-          class="popup__close-button popup__place-close-button"
-          aria-label="Закрыть"
-        ></button>
+    <section class="element-grid">
+      <ul class="element-grid__list">
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2023 Диваев Сергей</p>
+  </footer>
+
+  <div class="popup popup_profile">
+    <div class="popup__container">
+      <form class="form_profile" method="post" name="form_profile" action="#">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <fieldset class="popup__fieldset">
+          <input class="popup__input popup__input_name" type="text" placeholder="Имя" name="name">
+          <input class="popup__input popup__input_description" type="text" placeholder="О себе"
+            name="description">
+        </fieldset>
+        <button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
+      </form>
+      <button class="popup__close-button popup__profile-close-button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_place">
+    <div class="popup__container">
+      <form class="form_place" method="post" name="form_profile" action="#">
+        <h3 class="popup__title">Новое место</h3>
+        <fieldset class="popup__fieldset">
+          <input class="popup__input popup__input_place" type="text" placeholder="Название" name="name">
+          <input class="popup__input popup__input_link" type="text" placeholder="Ссылка на картинку"
+            name="place">
+        </fieldset>
+        <button class="popup__save-button" type="submit" aria-label="Сохранить">Сохранить</button>
+      </form>
+      <button class="popup__close-button popup__place-close-button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <div class="popup popup_picture">
+    <div class="popup__picture-container">
+      <img class="popup__picture-img" src="#" alt="">
+      <p class="popup__picture-caption"></p>
+      <button class="popup__picture-close-button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <template class="card">
+    <li class="element-grid__element">
+      <img class="element-grid__image" src="#" alt="">
+      <div class="element-grid__caption-container">
+        <h2 class="element-grid__caption"></h2>
+        <button class="element-grid__like-button" type="button" aria-label="Поставить лайк"></button>
       </div>
-    </div>
-
-    <div class="popup popup__type_picture">
-      <div class="popup__picture-container">
-        <img class="popup__picture-img" src="initial" alt="initial" />
-        <p class="popup__picture-caption"></p>
-        <button
-          class="popup__picture-close-button"
-          aria-label="Закрыть"
-        ></button>
-      </div>
-    </div>
-
-    <template class="card">
-      <li class="element-grid__element">
-        <img class="element-grid__image" src="initial" alt="initial" />
-        <div class="element-grid__caption-container">
-          <h2 class="element-grid__caption"></h2>
-          <button
-            class="element-grid__like-button"
-            type="button"
-            aria-label="Поставить лайк"
-          ></button>
-        </div>
-        <button class="element-grid__delete-button"></button>
-      </li>
-    </template>
-  </body>
+      <button class="element-grid__delete-button"></button>
+    </li>
+  </template>
+  <script src="./components/constans.js"></script>
+  <script src="./components/index.js"></script>
+</body>
 </html>
