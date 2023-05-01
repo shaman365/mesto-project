@@ -1,4 +1,4 @@
-import './index.css';
+import '../pages/index.css';
 
 import {
   initialCards,
@@ -22,7 +22,7 @@ import {
   popupProfile,
   templateCard,
   cardContainer
-} from '../components/constans.js'
+} from './constans.js'
 
 
 // листенеры

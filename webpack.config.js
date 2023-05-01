@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // подклю
 
 module.exports = {
   // указали первое место, куда заглянет webpack, — файл index.js в папке src/pages
-  entry: { main: './src/pages/index.js' },
+  entry: { main: './src/components/index.js' },
 
   // указали в какой файл будет собираться весь js и дали ему имя
   output: {
