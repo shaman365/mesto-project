@@ -1,7 +1,6 @@
 import '../pages/index.css';
 
 import {
-  initialCards,
   buttonOpenPoupProfile,
   buttonClosePoupProfile,
   buttonAddPlace,
@@ -15,14 +14,18 @@ import {
   inputPlaceLink,
   profileName,
   profileDescription,
-  pictureImage,
-  pictureCaption,
   popupPlace,
   popupPicture,
   popupProfile,
-  templateCard,
-  cardContainer
-} from './constans.js'
+  openPopup,
+  closePopup
+} from './modal.js'
+
+import {
+  initialCards,
+  cardContainer,
+  createCard
+} from './card.js'
 
 
 // листенеры
@@ -67,14 +70,6 @@ function initializeCards(cardList) {
   });
 }
 
-function openPopup(popup) {
-  popup ? popup.classList.add('popup_opened') : console.error('openPopup. param "popup" is null');
-}
-
-function closePopup(popup) {
-  popup ? popup.classList.remove('popup_opened') : console.error('closePopup. param "popup" is null');
-}
-
 function submitFormProfileHandler(evt) {
   evt.preventDefault();
 
@@ -93,37 +88,4 @@ function submitFormPlaceHandler(evt) {
 
   cardContainer.prepend(createCard(card));
   closePopup(popupPlace);
-}
-
-function createCard(element) {
-  console.log('createCard element: ', element);
-
-  const card = templateCard.querySelector('.element-grid__element').cloneNode(true);
-
-  const cardImg = card.querySelector('.element-grid__image');
-  const cardCaption = card.querySelector('.element-grid__caption')
-  const likeButton = card.querySelector('.element-grid__like-button');
-  const deleteButton = card.querySelector('.element-grid__delete-button');
-
-  likeButton.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element-grid__like-button_liked');
-  });
-
-  deleteButton.addEventListener('click', (evt) => {
-    evt.target.closest('.element-grid__element').remove();
-  });
-
-  cardImg.addEventListener('click', (evt) => {
-    pictureImage.setAttribute('src', element.link);
-    pictureImage.setAttribute('alt', element.name);
-    pictureCaption.textContent = element.name;
-
-    openPopup(popupPicture);
-  });
-
-  cardImg.setAttribute('src', element.link);
-  cardImg.setAttribute('alt', element.name);
-  cardCaption.textContent = element.name;
-
-  return card;
 }
