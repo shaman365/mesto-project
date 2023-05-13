@@ -63,4 +63,11 @@ const createCard = (element) => {
 }
 
 
-export { initialCards, cardContainer, createCard }
+// функции
+function initializeCards() {
+  initialCards.forEach(element => {
+    cardContainer.append(createCard(element));
+  });
+}
+
+export { cardContainer, createCard, initializeCards }

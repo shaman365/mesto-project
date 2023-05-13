@@ -50,10 +50,14 @@
       <p class="footer__copyright">&copy; 2023 Диваев Сергей</p>
     </footer>
 
-    <div class="popup popup_profile">
+    <section class="popup popup_profile">
       <div class="popup__container">
+        <button
+          class="popup__close-button popup__profile-close-button"
+          aria-label="Закрыть"
+        ></button>
         <form
-          class="form_profile"
+          class="form form_profile"
           method="post"
           name="form_profile"
           action="#"
@@ -61,57 +65,54 @@
         >
           <h3 class="popup__title">Редактировать профиль</h3>
           <fieldset class="popup__fieldset">
-            <label class="form__field">
-              <input
-                class="popup__input popup__input_name"
-                type="text"
-                placeholder="Имя"
-                name="name"
-                id="profile-name"
-                required
-                minlength="2"
-                maxlength="40"
-                data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
-              />
-              <span class="form__input-error profile-name-input-error"></span>
-            </label>
-            <label class="form__field">
-              <input
-                class="popup__input popup__input_description"
-                type="text"
-                placeholder="О себе"
-                name="description"
-                id="profile-description"
-                required
-                minlength="2"
-                maxlength="200"
-                data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
-              />
-              <span
-                class="form__input-error profile-description-input-error"
-              ></span>
-            </label>
+            <input
+              class="form__input popup__input popup__input_name"
+              type="text"
+              placeholder="Имя"
+              name="name"
+              id="profile-name"
+              required
+              minlength="2"
+              maxlength="40"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
+              pattern="^[-a-zA-Zа-яёА-ЯЁ\s]+$"
+            />
+            <span class="form__input-error profile-name-input-error"></span>
+            <input
+              class="form__input popup__input popup__input_description"
+              type="text"
+              placeholder="О себе"
+              name="description"
+              id="profile-description"
+              required
+              minlength="2"
+              maxlength="200"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
+              pattern="^[-a-zA-Zа-яёА-ЯЁ\s]+$"
+            />
+            <span
+              class="form__input-error profile-description-input-error"
+            ></span>
+            <button
+              class="form__submit popup__save-button"
+              type="submit"
+              aria-label="Сохранить"
+            >
+              Сохранить
+            </button>
           </fieldset>
-          <button
-            class="popup__save-button"
-            type="submit"
-            aria-label="Сохранить"
-            disabled="disabled"
-          >
-            Сохранить
-          </button>
         </form>
+      </div>
+    </section>
+
+    <section class="popup popup_place">
+      <div class="popup__container">
         <button
-          class="popup__close-button popup__profile-close-button"
+          class="popup__close-button popup__place-close-button"
           aria-label="Закрыть"
         ></button>
-      </div>
-    </div>
-
-    <div class="popup popup_place">
-      <div class="popup__container">
         <form
-          class="form_place"
+          class="form form_place"
           method="post"
           name="form_profile"
           action="#"
@@ -121,7 +122,7 @@
           <fieldset class="popup__fieldset">
             <label class="form__field">
               <input
-                class="popup__input popup__input_place"
+                class="form__input popup__input popup__input_place"
                 type="text"
                 placeholder="Название"
                 name="name"
@@ -130,12 +131,13 @@
                 minlength="2"
                 maxlength="30"
                 data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
+                pattern="^[-a-zA-Zа-яёА-ЯЁ\s]+$"
               />
               <span class="form__input-error place-name-input-error"></span>
             </label>
             <label class="form__field">
               <input
-                class="popup__input popup__input_link"
+                class="form__input popup__input popup__input_link"
                 type="text"
                 placeholder="Ссылка на картинку"
                 name="place"
@@ -145,21 +147,17 @@
               />
               <span class="form__input-error place-link-input-error"></span>
             </label>
+            <button
+              class="form__submit popup__save-button"
+              type="submit"
+              aria-label="Сохранить"
+            >
+              Сохранить
+            </button>
           </fieldset>
-          <button
-            class="popup__save-button"
-            type="submit"
-            aria-label="Сохранить"
-          >
-            Сохранить
-          </button>
         </form>
-        <button
-          class="popup__close-button popup__place-close-button"
-          aria-label="Закрыть"
-        ></button>
       </div>
-    </div>
+    </section>
 
     <div class="popup popup_picture">
       <div class="popup__picture-container">

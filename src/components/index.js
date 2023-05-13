@@ -22,17 +22,23 @@ import {
 } from './modal.js'
 
 import {
-  initialCards,
   cardContainer,
-  createCard
+  createCard,
+  initializeCards
 } from './card.js'
 
+import { enableValidation } from './validate';
+
+import { config } from './utils';
 
 // листенеры
 buttonOpenPoupProfile.addEventListener('click', () => {
   inputProfileName.value = profileName.textContent;
   inputProfileDescription.value = profileDescription.textContent;
+
   openPopup(popupProfile);
+
+  enableValidation(config);
 });
 
 buttonClosePoupProfile.addEventListener('click', () => {
@@ -52,23 +58,18 @@ buttonClosePoupPicture.addEventListener('click', () => {
 buttonAddPlace.addEventListener('click', () => {
   inputPlaceName.value = '';
   inputPlaceLink.value = '';
-
   openPopup(popupPlace);
+
+  enableValidation(config);
+
 });
 
 window.addEventListener('load', () => {
-  initializeCards(initialCards);
+  initializeCards();
 });
 
 formProfile.addEventListener('submit', submitFormProfileHandler);
 formPlace.addEventListener('submit', submitFormPlaceHandler);
-
-// функции
-function initializeCards(cardList) {
-  cardList.forEach(element => {
-    cardContainer.append(createCard(element));
-  });
-}
 
 function submitFormProfileHandler(evt) {
   evt.preventDefault();
