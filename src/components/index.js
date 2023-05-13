@@ -36,14 +36,27 @@ buttonOpenPoupProfile.addEventListener('click', () => {
   inputProfileName.value = profileName.textContent;
   inputProfileDescription.value = profileDescription.textContent;
 
-  openPopup(popupProfile);
+  const fieldList = popupProfile.querySelectorAll('.popup__input')
+  Array.from(fieldList).forEach(field => {
+    field.classList.remove('popup__input_error');
+    field.classList.remove('form__input_type_error')
+  })
 
-  enableValidation(config);
+  const errorElement = popupProfile.querySelectorAll('.form__input-error')
+
+  Array.from(errorElement).forEach(errElem => {
+    errElem.textContent = '';
+    errElem.classList.remove('form__input-error_active')
+  })
+
+  const buttonSubmitProfile = popupProfile.querySelector('.popup__save-button')
+  buttonSubmitProfile.classList.remove('popup__save-button_disabled')
+  buttonSubmitProfile.removeAttribute('disabled')
+
+  openPopup(popupProfile);
 });
 
 buttonClosePoupProfile.addEventListener('click', () => {
-  inputProfileName.value = '';
-  inputProfileDescription.value = '';
   closePopup(popupProfile);
 });
 
@@ -56,12 +69,7 @@ buttonClosePoupPicture.addEventListener('click', () => {
 });
 
 buttonAddPlace.addEventListener('click', () => {
-  inputPlaceName.value = '';
-  inputPlaceLink.value = '';
   openPopup(popupPlace);
-
-  enableValidation(config);
-
 });
 
 window.addEventListener('load', () => {
@@ -88,5 +96,8 @@ function submitFormPlaceHandler(evt) {
   card.link = inputPlaceLink.value;
 
   cardContainer.prepend(createCard(card));
+  evt.target.reset()
   closePopup(popupPlace);
 }
+
+enableValidation(config);

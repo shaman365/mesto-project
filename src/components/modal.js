@@ -6,8 +6,8 @@ const buttonClosePoupPlace = document.querySelector('.popup__place-close-button'
 const buttonClosePoupPicture = document.querySelector('.popup__picture-close-button');
 
 //формы
-const formProfile = document.querySelector('.form_profile');
-const formPlace = document.querySelector('.form_place');
+const formProfile = document.forms.form_profile;
+const formPlace = document.forms.form_place;
 
 // поля формы профиль
 const inputProfileName = document.querySelector('.popup__input_name');
@@ -38,7 +38,7 @@ const handleKeydownEsc = (evt) => {
 
 const handleOuterMouseClick = (evt) => {
   if (evt.target === evt.currentTarget) {
-    closePopup(getOpenedPopup())
+    closePopup(evt.currentTarget)
   }
 }
 
@@ -51,19 +51,7 @@ const openPopup = (popup) => {
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleKeydownEsc);
-
-  const fieldList = popup.querySelectorAll('.popup__input')
-  Array.from(fieldList).forEach(field => {
-    field.classList.remove('popup__input_error');
-    field.classList.remove('form__input_type_error')
-  })
-
-  const errorElement = popup.querySelectorAll('.form__input-error')
-
-  Array.from(errorElement).forEach(errElem => {
-    errElem.textContent = '';
-    errElem.classList.remove('form__input-error_active')
-  })
+  popup.removeEventListener('click', handleOuterMouseClick);
 }
 
 export {
