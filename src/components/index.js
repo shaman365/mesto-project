@@ -49,10 +49,6 @@ buttonOpenPoupProfile.addEventListener('click', () => {
     errElem.classList.remove('form__input-error_active')
   })
 
-  const buttonSubmitProfile = popupProfile.querySelector('.popup__save-button')
-  buttonSubmitProfile.classList.remove('popup__save-button_disabled')
-  buttonSubmitProfile.removeAttribute('disabled')
-
   openPopup(popupProfile);
 });
 
@@ -76,10 +72,10 @@ window.addEventListener('load', () => {
   initializeCards();
 });
 
-formProfile.addEventListener('submit', submitFormProfileHandler);
-formPlace.addEventListener('submit', submitFormPlaceHandler);
+formProfile.addEventListener('submit', submitFormProfile);
+formPlace.addEventListener('submit', submitFormPlace);
 
-function submitFormProfileHandler(evt) {
+function submitFormProfile(evt) {
   evt.preventDefault();
 
   profileName.textContent = inputProfileName.value;
@@ -88,12 +84,16 @@ function submitFormProfileHandler(evt) {
   closePopup(popupProfile);
 }
 
-function submitFormPlaceHandler(evt) {
+function submitFormPlace(evt) {
   evt.preventDefault();
 
   const card = {};
   card.name = inputPlaceName.value;
   card.link = inputPlaceLink.value;
+
+  const buttonSubmit = evt.target.querySelector('.popup__save-button');
+  buttonSubmit.classList.add('popup__save-button_disabled');
+  buttonSubmit.setAttribute('disabled', true);
 
   cardContainer.prepend(createCard(card));
   evt.target.reset()
