@@ -31,6 +31,8 @@ import { enableValidation } from './validate';
 
 import { config } from './utils';
 
+import { getInitialCards } from './api'
+
 // листенеры
 buttonOpenPoupProfile.addEventListener('click', () => {
   inputProfileName.value = profileName.textContent;
@@ -101,3 +103,5 @@ function submitFormPlace(evt) {
 }
 
 enableValidation(config);
+
+getInitialCards()

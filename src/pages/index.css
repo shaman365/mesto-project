@@ -46,3 +46,5 @@
 @import url(../blocks/form/__input-error/_active/form__input-error_active.css);
 @import url(../blocks/form/__field/form__field.css);
 @import url(../blocks/popup/__input/_error/popup__input_error.css);
+@import url(../blocks/element-grid/__like-wrapper/element-grid__like-wrapper.css);
+@import url(../blocks/element-grid/__like-number/element-grid__like-number.css);
