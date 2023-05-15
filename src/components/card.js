@@ -1,32 +1,5 @@
 import { pictureImage, pictureCaption, openPopup, popupPicture, handleEscKeypress } from "./modal";
-import { getInitialCards } from "./api";
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import { getInitialCards, deleteCard } from "./api";
 
 // template, container
 const templateCard = document.querySelector('.card').content;
@@ -46,7 +19,12 @@ const createCard = (element) => {
   });
 
   deleteButton.addEventListener('click', (evt) => {
-    evt.target.closest('.element-grid__element').remove();
+    const cardId = evt.target.closest('.element-grid__element').id;
+    console.log('deleteButton: ', evt.target.closest('.element-grid__element').id)
+    deleteCard(cardId)
+      .then(result => {
+        evt.target.closest('.element-grid__element').remove();
+      })
   });
 
   cardImg.addEventListener('click', (evt) => {
@@ -57,12 +35,11 @@ const createCard = (element) => {
     openPopup(popupPicture);
   });
 
-  console.log(JSON.stringify(element, null, 1))
-
   cardImg.setAttribute('src', element.link);
   cardImg.setAttribute('alt', element.name);
   cardCaption.textContent = element.name;
   likeNumber.textContent = element.likes.length;
+  card.id = element._id;
 
   return card;
 }

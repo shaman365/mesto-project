@@ -24,14 +24,14 @@ import {
 import {
   cardContainer,
   createCard,
-  initializeCards
+  initializeCards,
 } from './card.js'
 
 import { enableValidation } from './validate';
 
 import { config } from './utils';
 
-import { getInitialCards } from './api'
+import { postCard } from './api'
 
 // листенеры
 buttonOpenPoupProfile.addEventListener('click', () => {
@@ -93,15 +93,22 @@ function submitFormPlace(evt) {
   card.name = inputPlaceName.value;
   card.link = inputPlaceLink.value;
 
-  const buttonSubmit = evt.target.querySelector('.popup__save-button');
-  buttonSubmit.classList.add('popup__save-button_disabled');
-  buttonSubmit.setAttribute('disabled', true);
+  postCard(card)
+    .then(card => {
+      cardContainer.prepend(createCard(card));
+    })
+    .catch(err => {
 
-  cardContainer.prepend(createCard(card));
-  evt.target.reset()
-  closePopup(popupPlace);
+    })
+    .finally(_ => {
+      const buttonSubmit = evt.target.querySelector('.popup__save-button');
+      buttonSubmit.classList.add('popup__save-button_disabled');
+      buttonSubmit.setAttribute('disabled', true);
+      evt.target.reset()
+      closePopup(popupPlace);
+    })
+
+
 }
 
 enableValidation(config);
-
-getInitialCards()
