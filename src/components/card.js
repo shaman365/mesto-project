@@ -1,5 +1,5 @@
-import { pictureImage, pictureCaption, openPopup, popupPicture, handleEscKeypress } from "./modal";
-import { getInitialCards, deleteCard } from "./api";
+import { pictureImage, pictureCaption, openPopup, popupPicture, profileInfo } from "./modal";
+import { getInitialCards, deleteCard, setLike, removeLike } from "./api";
 
 // template, container
 const templateCard = document.querySelector('.card').content;
@@ -7,25 +7,46 @@ const cardContainer = document.querySelector('.element-grid__list');
 
 const createCard = (element) => {
   const card = templateCard.querySelector('.element-grid__element').cloneNode(true);
-
   const cardImg = card.querySelector('.element-grid__image');
   const cardCaption = card.querySelector('.element-grid__caption')
   const likeButton = card.querySelector('.element-grid__like-button');
   const deleteButton = card.querySelector('.element-grid__delete-button');
   const likeNumber = card.querySelector('.element-grid__like-number');
 
+  if (element.likes.length && element.likes.some(el => el._id === profileInfo.id)) {
+    likeButton.classList.add('element-grid__like-button_liked');
+  }
+
   likeButton.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('element-grid__like-button_liked');
+    const cardId = evt.target.closest('.element-grid__element').id
+
+    if (evt.target.classList.contains('element-grid__like-button_liked')) {
+      removeLike(cardId)
+        .then(result => {
+          evt.target.classList.toggle('element-grid__like-button_liked');
+          likeNumber.textContent = result.likes.length;
+        })
+    } else {
+      setLike(cardId)
+        .then(result => {
+          evt.target.classList.toggle('element-grid__like-button_liked');
+          likeNumber.textContent = result.likes.length;
+        })
+    }
+
   });
 
-  deleteButton.addEventListener('click', (evt) => {
-    const cardId = evt.target.closest('.element-grid__element').id;
-    console.log('deleteButton: ', evt.target.closest('.element-grid__element').id)
-    deleteCard(cardId)
-      .then(result => {
-        evt.target.closest('.element-grid__element').remove();
-      })
-  });
+  if (element.owner._id === profileInfo.id) {
+    deleteButton.addEventListener('click', (evt) => {
+      const cardId = evt.target.closest('.element-grid__element').id;
+      deleteCard(cardId)
+        .then(result => {
+          evt.target.closest('.element-grid__element').remove();
+        })
+    });
+  } else {
+    deleteButton.style.display = 'none'
+  }
 
   cardImg.addEventListener('click', (evt) => {
     pictureImage.setAttribute('src', element.link);
@@ -43,7 +64,6 @@ const createCard = (element) => {
 
   return card;
 }
-
 
 // функции
 function initializeCards() {

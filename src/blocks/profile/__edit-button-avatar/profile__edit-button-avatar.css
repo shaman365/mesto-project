@@ -1,0 +1,10 @@
+.profile__edit-button-avatar {
+  border: 0;
+  outline: 0;
+  padding: 0;
+  background-color: #000;
+  border-radius: 50%;
+  max-width: 120px;
+  max-height: 120px;
+  width: 100%;
+}

@@ -6,17 +6,24 @@ import {
   buttonAddPlace,
   buttonClosePoupPicture,
   buttonClosePoupPlace,
+  buttonOpenPopupAvatar,
+  buttonClosePopupAvatar,
   formProfile,
   formPlace,
+  formAvatar,
   inputProfileName,
   inputProfileDescription,
+  inputProfileAvatar,
   inputPlaceName,
   inputPlaceLink,
   profileName,
   profileDescription,
+  profileImage,
+  profileInfo,
   popupPlace,
   popupPicture,
   popupProfile,
+  popupAvatar,
   openPopup,
   closePopup
 } from './modal.js'
@@ -31,7 +38,7 @@ import { enableValidation } from './validate';
 
 import { config } from './utils';
 
-import { postCard } from './api'
+import { postCard, getUserInfo, updateUserInfo } from './api'
 
 // листенеры
 buttonOpenPoupProfile.addEventListener('click', () => {
@@ -70,24 +77,48 @@ buttonAddPlace.addEventListener('click', () => {
   openPopup(popupPlace);
 });
 
-window.addEventListener('load', () => {
-  initializeCards();
+buttonOpenPopupAvatar.addEventListener('click', () => {
+  openPopup(popupAvatar);
 });
+
+buttonClosePopupAvatar.addEventListener('click', () => {
+  closePopup(popupAvatar);
+})
+
+window.addEventListener('load', () => {
+  initializeData();
+});
+
 
 formProfile.addEventListener('submit', submitFormProfile);
 formPlace.addEventListener('submit', submitFormPlace);
+formAvatar.addEventListener('submit', submitFormAvatar);
 
 function submitFormProfile(evt) {
   evt.preventDefault();
 
-  profileName.textContent = inputProfileName.value;
-  profileDescription.textContent = inputProfileDescription.value;
+  const buttonSubmit = evt.target.querySelector('.popup__save-button');
+  buttonSubmit.textContent = 'Сохранение...'
+
+  const userInfo = {};
+  userInfo.name = inputProfileName.value;
+  userInfo.about = inputProfileDescription.value;
+
+  updateUserInfo(userInfo)
+    .then(userInfo => {
+      profileName.textContent = userInfo.name;
+      profileDescription.textContent = userInfo.about;
+      buttonSubmit.textContent = 'Сохранить';
+    })
 
   closePopup(popupProfile);
 }
 
 function submitFormPlace(evt) {
   evt.preventDefault();
+
+  const buttonSubmit = evt.target.querySelector('.popup__save-button');
+  buttonSubmit.textContent = 'Сохранение...'
 
   const card = {};
   card.name = inputPlaceName.value;
@@ -101,14 +132,45 @@ function submitFormPlace(evt) {
 
     })
     .finally(_ => {
-      const buttonSubmit = evt.target.querySelector('.popup__save-button');
       buttonSubmit.classList.add('popup__save-button_disabled');
       buttonSubmit.setAttribute('disabled', true);
+      buttonSubmit.textContent = 'Сохранить';
       evt.target.reset()
       closePopup(popupPlace);
     })
+}
 
+function submitFormAvatar(evt) {
+  evt.preventDefault();
 
+  const buttonSubmit = evt.target.querySelector('.popup__save-button');
+  buttonSubmit.textContent = 'Сохранение...'
+
+  const userInfo = {};
+  userInfo.avatar = inputProfileAvatar.value;
+
+  updateUserInfo(userInfo)
+    .then(userInfo => {
+      profileImage.src = userInfo.avatar;
+    })
+    .finally(_ => {
+      buttonSubmit.classList.add('popup__save-button_disabled');
+      buttonSubmit.setAttribute('disabled', true);
+      buttonSubmit.textContent = 'Сохранить';
+      evt.target.reset()
+      closePopup(popupAvatar)
+    })
+}
+
+const initializeData = () => {
+  getUserInfo()
+    .then(userInfo => {
+      profileName.textContent = userInfo.name;
+      profileDescription.textContent = userInfo.about;
+      profileImage.src = userInfo.avatar;
+      profileInfo.id = userInfo._id;
+      initializeCards();
+    })
 }
 
 enableValidation(config);

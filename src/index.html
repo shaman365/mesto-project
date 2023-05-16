@@ -17,25 +17,29 @@
     <main>
       <section class="profile">
         <div class="profile__container">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Фотография профиля"
-          />
+          <div class="profile__avatar-container">
+            <button class="profile__edit-button-avatar">
+              <img
+                class="profile__avatar"
+                src="<%=require('./images/avatar.jpg')%>"
+                alt="Фотография профиля"
+              />
+            </button>
+          </div>
           <div class="profile__info-container">
             <div class="profile__info">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <h1 class="profile__name">Загрузка...</h1>
               <button
                 class="profile__edit-button"
                 type="button"
                 aria-label="Редактировать профиль"
               ></button>
             </div>
-            <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description">Загрузка...</p>
           </div>
         </div>
         <button
-          class="profile__add-button"
+          class="place__add-button"
           type="button"
           aria-label="Добавить место"
         ></button>
@@ -94,7 +98,7 @@
               class="form__input-error profile-description-input-error"
             ></span>
             <button
-              class="form__submit popup__save-button"
+              class="form__submit popup__save-button popup__save-button"
               type="submit"
               aria-label="Сохранить"
             >
@@ -146,6 +150,42 @@
               />
               <span class="form__input-error place-link-input-error"></span>
             </label>
+            <button
+              class="form__submit popup__save-button"
+              type="submit"
+              aria-label="Сохранить"
+            >
+              Сохранить
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+
+    <section class="popup popup_avatar">
+      <div class="popup__container">
+        <button
+          class="popup__close-button popup__avatar-close-button"
+          aria-label="Закрыть"
+        ></button>
+        <form
+          class="form form_avatar"
+          method="post"
+          name="form_avatar"
+          action="#"
+          novalidate
+        >
+          <h3 class="popup__title">Обновить аватар</h3>
+          <fieldset class="popup__fieldset">
+            <input
+              class="form__input popup__input popup__input_avatar"
+              type="url"
+              placeholder="Ссылка на аватар"
+              name="avatar"
+              id="avatar-link"
+              required
+            />
+            <span class="form__input-error avatar-link-input-error"></span>
             <button
               class="form__submit popup__save-button"
               type="submit"
