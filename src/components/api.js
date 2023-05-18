@@ -6,166 +6,86 @@ const config = {
   }
 }
 
+const getResponseData = (res) => {
+  if (!res.ok) {
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+  return res.json();
+}
+
 const getInitialCards = () => {
-  return new Promise((resolve, reject) => {
-    fetch(config.baseUrl.concat('/cards'), { headers: config.headers })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .then(cardList => {
-        resolve(cardList)
-      })
-      .catch(err => {
-        console.error('getInitialCards err:', err)
-        reject(err)
-      })
-  })
-};
+  return fetch(config.baseUrl.concat('/cards'), { headers: config.headers })
+    .then(res => { return getResponseData(res) })
+}
 
 const postCard = (card) => {
-  return new Promise((resolve, reject) => {
-    fetch(config.baseUrl.concat('/cards'),
-      {
-        method: 'POST',
-        body: JSON.stringify(card),
-        headers: config.headers
-      }
-    )
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .then(card => {
-        resolve(card)
-      })
-      .catch(err => {
-        console.error('postCard err:', err)
-        reject(err)
-      })
-  })
+  return fetch(config.baseUrl.concat('/cards'),
+    {
+      method: 'POST',
+      body: JSON.stringify(card),
+      headers: config.headers
+    }
+  )
+    .then(res => {
+      return getResponseData(res);
+    })
 }
 
 const deleteCard = (id) => {
-  return new Promise((resolve, reject) => {
-    fetch(config.baseUrl.concat('/cards/').concat(id),
-      {
-        method: 'DELETE',
-        headers: config.headers
-      }
-    )
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .then(card => {
-        resolve(card)
-      })
-      .catch(err => {
-        console.error('postCard err:', err)
-        reject(err)
-      })
-  })
+  return fetch(config.baseUrl.concat('/cards/').concat(id),
+    {
+      method: 'DELETE',
+      headers: config.headers
+    }
+  )
+    .then(res => {
+      return getResponseData(res);
+    })
 }
 
 const setLike = (id) => {
-  return new Promise((resolve, reject) => {
-    fetch(config.baseUrl.concat('/cards/likes/').concat(id),
-      {
-        method: 'PUT',
-        headers: config.headers
-      }
-    )
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .then(card => {
-        resolve(card)
-      })
-      .catch(err => {
-        console.error('setLike err:', err)
-        reject(err)
-      })
-  })
+  return fetch(config.baseUrl.concat('/cards/likes/').concat(id),
+    {
+      method: 'PUT',
+      headers: config.headers
+    }
+  )
+    .then(res => {
+      return getResponseData(res);
+    })
 }
 
 const removeLike = (id) => {
-  return new Promise((resolve, reject) => {
-    fetch(config.baseUrl.concat('/cards/likes/').concat(id),
-      {
-        method: 'DELETE',
-        headers: config.headers
-      }
-    )
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .then(card => {
-        resolve(card)
-      })
-      .catch(err => {
-        console.error('removeLike err:', err)
-        reject(err)
-      })
-  })
+  return fetch(config.baseUrl.concat('/cards/likes/').concat(id),
+    {
+      method: 'DELETE',
+      headers: config.headers
+    }
+  )
+    .then(res => {
+      return getResponseData(res);
+    })
 }
 
 const getUserInfo = () => {
-  return new Promise((resolve, reject) => {
-    fetch(config.baseUrl.concat('/users/me'), { headers: config.headers })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .then(userInfo => {
-        resolve(userInfo)
-      })
-      .catch(err => {
-        console.error('getUserInfo err:', err)
-        reject(err)
-      })
-  })
+  return fetch(config.baseUrl.concat('/users/me'), { headers: config.headers })
+    .then(res => {
+      return getResponseData(res);
+    })
 };
 
 const updateUserInfo = (userInfo) => {
   const resourcePath = userInfo.avatar ? '/users/me/avatar' : '/users/me';
-
-  return new Promise((resolve, reject) => {
-    fetch(config.baseUrl.concat(resourcePath),
-      {
-        method: 'PATCH',
-        body: JSON.stringify(userInfo),
-        headers: config.headers
-      }
-    )
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        return Promise.reject(`Ошибка: ${res.status}`)
-      })
-      .then(card => {
-        resolve(card)
-      })
-      .catch(err => {
-        console.error('updateUserInfo err:', err)
-        reject(err)
-      })
-  })
+  return fetch(config.baseUrl.concat(resourcePath),
+    {
+      method: 'PATCH',
+      body: JSON.stringify(userInfo),
+      headers: config.headers
+    }
+  )
+    .then(res => {
+      return getResponseData(res);
+    })
 }
 
 export { getInitialCards, postCard, deleteCard, getUserInfo, updateUserInfo, setLike, removeLike }

@@ -1,5 +1,6 @@
-import { pictureImage, pictureCaption, openPopup, popupPicture, profileInfo } from "./modal";
-import { getInitialCards, deleteCard, setLike, removeLike } from "./api";
+import { openPopup } from './modal';
+import { getInitialCards, deleteCard, setLike, removeLike } from './api';
+import { pictureImage, pictureCaption, popupPicture, profileInfo } from './constants'
 
 // template, container
 const templateCard = document.querySelector('.card').content;
@@ -26,11 +27,17 @@ const createCard = (element) => {
           evt.target.classList.toggle('element-grid__like-button_liked');
           likeNumber.textContent = result.likes.length;
         })
+        .catch(err => {
+          console.error('removeLike err:', err)
+        })
     } else {
       setLike(cardId)
         .then(result => {
           evt.target.classList.toggle('element-grid__like-button_liked');
           likeNumber.textContent = result.likes.length;
+        })
+        .catch(err => {
+          console.error('setLike err:', err)
         })
     }
 
@@ -42,6 +49,9 @@ const createCard = (element) => {
       deleteCard(cardId)
         .then(result => {
           evt.target.closest('.element-grid__element').remove();
+        })
+        .catch(err => {
+          console.error('deleteCard err:', err)
         })
     });
   } else {
@@ -71,7 +81,10 @@ function initializeCards() {
     .then(cardList => {
       cardList.forEach(element => {
         cardContainer.append(createCard(element));
-      });
+      })
+    })
+    .catch(err => {
+      console.error('getInitialCards err:', err)
     })
 }
 

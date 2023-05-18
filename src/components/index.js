@@ -1,6 +1,17 @@
 import '../pages/index.css';
 
 import {
+  openPopup,
+  closePopup
+} from './modal.js'
+
+import {
+  cardContainer,
+  createCard,
+  initializeCards,
+} from './card.js'
+
+import {
   buttonOpenPoupProfile,
   buttonClosePoupProfile,
   buttonAddPlace,
@@ -24,15 +35,8 @@ import {
   popupPicture,
   popupProfile,
   popupAvatar,
-  openPopup,
-  closePopup
-} from './modal.js'
-
-import {
-  cardContainer,
-  createCard,
-  initializeCards,
-} from './card.js'
+  buttonSubmit
+} from './constants'
 
 import { enableValidation } from './validate';
 
@@ -97,7 +101,6 @@ formAvatar.addEventListener('submit', submitFormAvatar);
 function submitFormProfile(evt) {
   evt.preventDefault();
 
-  const buttonSubmit = evt.target.querySelector('.popup__save-button');
   buttonSubmit.textContent = 'Сохранение...'
 
   const userInfo = {};
@@ -108,16 +111,19 @@ function submitFormProfile(evt) {
     .then(userInfo => {
       profileName.textContent = userInfo.name;
       profileDescription.textContent = userInfo.about;
+      closePopup(popupProfile);
+    })
+    .catch(err => {
+      console.error('updateUserInfo err:', err)
+    })
+    .finally(_ => {
       buttonSubmit.textContent = 'Сохранить';
     })
-
-  closePopup(popupProfile);
 }
 
 function submitFormPlace(evt) {
   evt.preventDefault();
 
-  const buttonSubmit = evt.target.querySelector('.popup__save-button');
   buttonSubmit.textContent = 'Сохранение...'
 
   const card = {};
@@ -127,23 +133,22 @@ function submitFormPlace(evt) {
   postCard(card)
     .then(card => {
       cardContainer.prepend(createCard(card));
+      closePopup(popupPlace);
     })
     .catch(err => {
-
+      console.error('postCard err:', err)
     })
     .finally(_ => {
       buttonSubmit.classList.add('popup__save-button_disabled');
       buttonSubmit.setAttribute('disabled', true);
       buttonSubmit.textContent = 'Сохранить';
       evt.target.reset()
-      closePopup(popupPlace);
     })
 }
 
 function submitFormAvatar(evt) {
   evt.preventDefault();
 
-  const buttonSubmit = evt.target.querySelector('.popup__save-button');
   buttonSubmit.textContent = 'Сохранение...'
 
   const userInfo = {};
@@ -152,13 +157,16 @@ function submitFormAvatar(evt) {
   updateUserInfo(userInfo)
     .then(userInfo => {
       profileImage.src = userInfo.avatar;
+      closePopup(popupAvatar)
+    })
+    .catch(err => {
+      console.error('updateUserInfo err:', err)
     })
     .finally(_ => {
       buttonSubmit.classList.add('popup__save-button_disabled');
       buttonSubmit.setAttribute('disabled', true);
       buttonSubmit.textContent = 'Сохранить';
       evt.target.reset()
-      closePopup(popupAvatar)
     })
 }
 
@@ -170,6 +178,9 @@ const initializeData = () => {
       profileImage.src = userInfo.avatar;
       profileInfo.id = userInfo._id;
       initializeCards();
+    })
+    .catch(err => {
+      console.error('getUserInfo err:', err)
     })
 }
 
